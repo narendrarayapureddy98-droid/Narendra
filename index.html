@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Weight Converter</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .converter-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #333333;
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555555;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+        input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="converter-card">
+    <h2>Weight Converter</h2>
+    
+    <div class="input-group">
+        <label for="pounds">Pounds (lbs)</label>
+        <input id="pounds" type="number" placeholder="Enter pounds...">
+    </div>
+
+    <div class="input-group">
+        <label for="kg">Kilograms (kg)</label>
+        <input id="kg" type="number" placeholder="Enter kilograms...">
+    </div>
+
+    <div class="input-group">
+        <label for="ounces">Ounces (oz)</label>
+        <input id="ounces" type="number" placeholder="Enter ounces...">
+    </div>
+
+    <div class="input-group">
+        <label for="grams">Grams (g)</label>
+        <input id="grams" type="number" placeholder="Enter grams...">
+    </div>
+</div>
+
+<script>
+    // Get references to all input fields
+    const lbsInput = document.getElementById("pounds");
+    const kgInput = document.getElementById("kg");
+    const ozInput = document.getElementById("ounces");
+    const gramsInput = document.getElementById("grams");
+
+    // Clear all fields if the active field is completely empty
+    function clearAllIfEmpty(value) {
+        if (value === "") {
+            lbsInput.value = "";
+            kgInput.value = "";
+            ozInput.value = "";
+            gramsInput.value = "";
+            return true;
+        }
+        return false;
+    }
+
+    // Convert from Pounds
+    lbsInput.addEventListener("input", function() {
+        if (clearAllIfEmpty(this.value)) return;
+        const lbs = parseFloat(this.value);
+        kgInput.value = (lbs * 0.45359237).toFixed(3);
+        ozInput.value = (lbs * 16).toFixed(2);
+        gramsInput.value = (lbs * 453.59237).toFixed(1);
+    });
+
+    // Convert from Kilograms
+    kgInput.addEventListener("input", function() {
+        if (clearAllIfEmpty(this.value)) return;
+        const kg = parseFloat(this.value);
+        lbsInput.value = (kg * 2.20462262).toFixed(3);
+        ozInput.value = (kg * 35.2739619).toFixed(2);
+        gramsInput.value = (kg * 1000).toFixed(1);
+    });
+
+    // Convert from Ounces
+    ozInput.addEventListener("input", function() {
+        if (clearAllIfEmpty(this.value)) return;
+        const oz = parseFloat(this.value);
+        lbsInput.value = (oz / 16).toFixed(4);
+        kgInput.value = (oz / 35.2739619).toFixed(4);
+        gramsInput.value = (oz * 28.3495231).toFixed(2);
+    });
+
+    // Convert from Grams
+    gramsInput.addEventListener("input", function() {
+        if (clearAllIfEmpty(this.value)) return;
+        const g = parseFloat(this.value);
+        lbsInput.value = (g / 453.59237).toFixed(4);
+        kgInput.value = (g / 1000).toFixed(4);
+        ozInput.value = (g / 28.3495231).toFixed(2);
+    });
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Weight Converter</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .converter-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #333333;
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555555;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+        input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="converter-card">
+    <h2>Weight Converter</h2>
+    
+    <div class="input-group">
+        <label for="pounds">Pounds (lbs)</label>
+        <input id="pounds" type="number" placeholder="Enter pounds...">
+    </div>
+
+    <div class="input-group">
+        <label for="kg">Kilograms (kg)</label>
+        <input id="kg" type="number" placeholder="Enter kilograms...">
+    </div>
+
+    <div class="input-group">
+        <label for="ounces">Ounces (oz)</label>
+        <input id="ounces" type="number" placeholder="Enter ounces...">
+    </div>
+
+    <div class="input-group">
+        <label for="grams">Grams (g)</label>
+        <input id="grams" type="number" placeholder="Enter grams...">
+    </div>
+</div>
+
+<script>
+    // Get references to all input fields
+    const lbsInput = document.getElementById("pounds");
+    const kgInput = document.getElementById("kg");
+    const ozInput = document.getElementById("ounces");
+    const gramsInput = document.getElementById("grams");
+
+    // Clear all fields if the active field is completely empty
+    function clearAllIfEmpty(value) {
+        if (value === "") {
+            lbsInput.value = "";
+            kgInput.value = "";
+            ozInput.value = "";
+            gramsInput.value = "";
+            return true;
+        }
+        return false;
+    }
+
+    // Convert from Pounds
+    lbsInput.addEventListener("input", function() {
+        if (clearAllIfEmpty(this.value)) return;
+        const lbs = parseFloat(this.value);
+        kgInput.value = (lbs * 0.45359237).toFixed(3);
+        ozInput.value = (lbs * 16).toFixed(2);
+        gramsInput.value = (lbs * 453.59237).toFixed(1);
+    });
+
+    // Convert from Kilograms
+    kgInput.addEventListener("input", function() {
+        if (clearAllIfEmpty(this.value)) return;
+        const kg = parseFloat(this.value);
+        lbsInput.value = (kg * 2.20462262).toFixed(3);
+        ozInput.value = (kg * 35.2739619).toFixed(2);
+        gramsInput.value = (kg * 1000).toFixed(1);
+    });
+
+    // Convert from Ounces
+    ozInput.addEventListener("input", function() {
+        if (clearAllIfEmpty(this.value)) return;
+        const oz = parseFloat(this.value);
+        lbsInput.value = (oz / 16).toFixed(4);
+        kgInput.value = (oz / 35.2739619).toFixed(4);
+        gramsInput.value = (oz * 28.3495231).toFixed(2);
+    });
+
+    // Convert from Grams
+    gramsInput.addEventListener("input", function() {
+        if (clearAllIfEmpty(this.value)) return;
+        const g = parseFloat(this.value);
+        lbsInput.value = (g / 453.59237).toFixed(4);
+        kgInput.value = (g / 1000).toFixed(4);
+        ozInput.value = (g / 28.3495231).toFixed(2);
+    });
+</script>
+
+</body>
+</html>
+>
